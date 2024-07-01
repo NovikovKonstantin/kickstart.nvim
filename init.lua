@@ -99,6 +99,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>bb', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 vim.keymap.set('n', '<leader>bd', '<cmd>:bd<cr>', { desc = 'Delete Buffer' })
 
+-- [[ Git Keymaps ]]
+vim.keymap.set('n', 'ng', '<cmd>Neogit<cr>', { desc = 'Run Neogit' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -774,6 +777,18 @@ require('lazy').setup({
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
+  },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      'nvim-telescope/telescope.nvim', -- optional
+      --'ibhagwan/fzf-lua', -- optional
+    },
+    config = true,
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

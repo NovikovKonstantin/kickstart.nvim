@@ -93,6 +93,9 @@ vim.keymap.set('n', '<leader>bd', '<cmd>:bd<cr>', { desc = 'Delete Buffer' })
 -- [[ Git Keymaps ]]
 vim.keymap.set('n', 'ng', '<cmd>Neogit<cr>', { desc = 'Run Neogit' })
 
+-- [[ Files Keymaps ]]
+vim.keymap.set('n', '<leader>fm', '<cmd>lua MiniFiles.open()<cr>', { desc = 'Files' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -158,7 +161,7 @@ require('lazy').setup({
         ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = 'Toggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git Hunk', _ = 'which_key_ignore' },
+        ['<leader>f'] = { name = 'Files', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({
@@ -355,12 +358,12 @@ require('lazy').setup({
     lazy = false,
     keys = {
       {
-        '<leader>f',
+        '<leader>cf',
         function()
           require('conform').format { async = true, lsp_fallback = true }
         end,
         mode = '',
-        desc = '[F]ormat buffer',
+        desc = 'Format buffer',
       },
     },
     opts = {
@@ -482,6 +485,9 @@ require('lazy').setup({
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       require('mini.surround').setup()
+
+      -- File manager
+      require('mini.files').setup()
 
       local statusline = require 'mini.statusline'
       statusline.setup { use_icons = vim.g.have_nerd_font }

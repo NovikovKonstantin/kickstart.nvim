@@ -493,9 +493,7 @@ require('lazy').setup({
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup(require('lualine').get_config())
-    end,
+    config = true, -- Replace with the actual config when you'd want to change the statusline
   },
 
   -- Highlight, edit, and navigate code

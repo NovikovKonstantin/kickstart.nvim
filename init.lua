@@ -1,5 +1,3 @@
--- TODO:Tab line appears when Neogit is opened
-
 -- Set <space> as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -20,6 +18,9 @@ vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
+
+-- Don't show the tab panel
+vim.opt.showtabline = 0
 
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = 'unnamedplus'

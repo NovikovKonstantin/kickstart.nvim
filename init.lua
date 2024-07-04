@@ -150,11 +150,10 @@ require('lazy').setup({
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
+    event = 'VimEnter',
+    config = function()
       require('which-key').setup()
 
-      -- Document existing key chains
       require('which-key').register {
         ['<leader>b'] = { name = 'Buffers', _ = 'which_key_ignore' },
         ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
@@ -164,11 +163,8 @@ require('lazy').setup({
         ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = 'Toggle', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = 'Files', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = 'Harpoon', _ = 'which_key_ignore' },
       }
-      -- visual mode
-      require('which-key').register({
-        ['<leader>h'] = { 'Git [H]unk' },
-      }, { mode = 'v' })
     end,
   },
 
@@ -539,6 +535,46 @@ require('lazy').setup({
       'nvim-telescope/telescope.nvim',
     },
     config = true,
+  },
+
+  -- Easy switch between files
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      -- [[ Init harpoon ]]
+      local harpoon = require 'harpoon'
+      harpoon:setup()
+
+      vim.keymap.set('n', '<leader>ha', function()
+        harpoon:list():add()
+      end, { desc = 'Add to list' })
+      vim.keymap.set('n', '<leader>hl', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end, { desc = 'Show list' })
+
+      vim.keymap.set('n', '<leader>hs', function()
+        harpoon:list():select(1)
+      end, { desc = 'Switch to 1' })
+      vim.keymap.set('n', '<leader>hd', function()
+        harpoon:list():select(2)
+      end, { desc = 'Switch to 2' })
+      vim.keymap.set('n', '<leader>hf', function()
+        harpoon:list():select(3)
+      end, { desc = 'Switch to 3' })
+      vim.keymap.set('n', '<leader>hg', function()
+        harpoon:list():select(4)
+      end, { desc = 'Switch to 4' })
+
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set('n', '<leader>hb', function()
+        harpoon:list():prev()
+      end, { desc = 'Switch to previous' })
+      vim.keymap.set('n', '<leader>hn', function()
+        harpoon:list():next()
+      end, { desc = 'Switch to next' })
+    end,
   },
 }, {
   ui = {

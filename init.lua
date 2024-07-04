@@ -91,7 +91,7 @@ vim.keymap.set('n', '<leader>bb', '<cmd>e #<cr>', { desc = 'Switch to Other Buff
 vim.keymap.set('n', '<leader>bd', '<cmd>:bd<cr>', { desc = 'Delete Buffer' })
 
 -- [[ Git Keymaps ]]
-vim.keymap.set('n', 'ng', '<cmd>Neogit<cr>', { desc = 'Run Neogit' })
+vim.keymap.set('n', '<leader>G', '<cmd>Neogit<cr>', { desc = 'Neogit' })
 
 -- [[ Files Keymaps ]]
 vim.keymap.set('n', '<leader>fm', '<cmd>lua MiniFiles.open()<cr>', { desc = 'Files' })

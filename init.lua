@@ -54,6 +54,8 @@ vim.opt.splitbelow = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -558,6 +560,35 @@ require('lazy').setup({
         harpoon:list():next()
       end, { desc = 'Switch to next' })
     end,
+  },
+
+  -- Pretty indent guides
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {
+      indent = {
+        char = '│',
+        tab_char = '│',
+      },
+      scope = { show_start = false, show_end = false },
+      exclude = {
+        filetypes = {
+          'help',
+          'alpha',
+          'dashboard',
+          'neo-tree',
+          'Trouble',
+          'trouble',
+          'lazy',
+          'mason',
+          'notify',
+          'toggleterm',
+          'lazyterm',
+        },
+      },
+    },
+    config = true,
   },
 }, {
   ui = {

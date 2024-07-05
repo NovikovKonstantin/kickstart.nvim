@@ -518,6 +518,9 @@ require('lazy').setup({
     end,
   },
 
+  -- Always show current function's signature
+  'nvim-treesitter/nvim-treesitter-context',
+
   -- Git manager
   {
     'NeogitOrg/neogit',

@@ -93,7 +93,9 @@ vim.keymap.set('n', '<leader>bd', '<cmd>:bd<cr>', { desc = 'Delete Buffer' })
 vim.keymap.set('n', '<leader>G', '<cmd>Neogit<cr>', { desc = 'Neogit' })
 
 -- [[ Files Keymaps ]]
-vim.keymap.set('n', '<leader>fm', '<cmd>lua MiniFiles.open()<cr>', { desc = 'Files' })
+vim.keymap.set('n', '<leader>fm', function()
+  require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
+end, { desc = 'Files' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

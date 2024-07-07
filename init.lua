@@ -97,6 +97,11 @@ vim.keymap.set('n', '<leader>fm', function()
   require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
 end, { desc = 'Files' })
 
+-- [[ Test Keymaps ]]
+vim.keymap.set('n', '<leader>tr', '<cmd>TestNearest<CR>', { desc = 'Run Nearest' })
+vim.keymap.set('n', '<leader>tf', '<cmd>TestFile<CR>', { desc = 'Run File' })
+vim.keymap.set('n', '<leader>tl', '<cmd>TestLast<CR>', { desc = 'Run Last' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -157,7 +162,7 @@ require('lazy').setup({
         ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = 'Toggle', _ = 'which_key_ignore' },
+        ['<leader>t'] = { name = 'Tests', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = 'Files', _ = 'which_key_ignore' },
         ['<leader>h'] = { name = 'Harpoon', _ = 'which_key_ignore' },
       }
@@ -343,6 +348,14 @@ require('lazy').setup({
           end,
         },
       }
+    end,
+  },
+
+  -- Tests plugin
+  {
+    'klen/nvim-test',
+    config = function()
+      require('nvim-test').setup()
     end,
   },
 

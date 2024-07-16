@@ -509,6 +509,18 @@ require('lazy').setup({
 
       -- File manager
       require('mini.files').setup()
+
+      -- Repeatable jump to symbol in one line
+      require('mini.jump').setup()
+    end,
+  },
+
+  -- Jump by labels
+  {
+    'ggandor/leap.nvim',
+
+    config = function()
+      require('leap').create_default_mappings()
     end,
   },
 

@@ -528,6 +528,18 @@ require('lazy').setup({
     config = true, -- Replace with the actual config when you'd want to change the statusline
   },
 
+  -- Show marks
+  {
+    'chentoast/marks.nvim',
+    config = function()
+      require('marks').setup {
+        mappings = {
+          delete_line = 'dmm',
+        },
+      }
+    end,
+  },
+
   -- Highlight, edit, and navigate code
   {
     'nvim-treesitter/nvim-treesitter',

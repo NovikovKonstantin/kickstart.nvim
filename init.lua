@@ -155,16 +155,25 @@ require('lazy').setup({
     config = function()
       require('which-key').setup()
 
-      require('which-key').register {
-        ['<leader>b'] = { name = 'Buffers', _ = 'which_key_ignore' },
-        ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = 'Tests', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = 'Files', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Harpoon', _ = 'which_key_ignore' },
+      require('which-key').add {
+        { '<leader>b', group = 'Buffers' },
+        { '<leader>b_', hidden = true },
+        { '<leader>c', group = 'Code' },
+        { '<leader>c_', hidden = true },
+        { '<leader>d', group = 'Document' },
+        { '<leader>d_', hidden = true },
+        { '<leader>f', group = 'Files' },
+        { '<leader>f_', hidden = true },
+        { '<leader>h', group = 'Harpoon' },
+        { '<leader>h_', hidden = true },
+        { '<leader>r', group = 'Rename' },
+        { '<leader>r_', hidden = true },
+        { '<leader>s', group = 'Search' },
+        { '<leader>s_', hidden = true },
+        { '<leader>t', group = 'Tests' },
+        { '<leader>t_', hidden = true },
+        { '<leader>w', group = 'Workspace' },
+        { '<leader>w_', hidden = true },
       }
     end,
   },
@@ -205,15 +214,6 @@ require('lazy').setup({
 
       -- `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      --vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      --vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      --vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      --vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      --vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      --vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      --vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      --vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      --vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Global search' })
       vim.keymap.set('n', '<leader>,', builtin.buffers, { desc = 'Opened buffers' })
       vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = 'Global grep' })
@@ -501,9 +501,6 @@ require('lazy').setup({
   {
     'echasnovski/mini.nvim',
     config = function()
-      -- Better Around/Inside textobjects
-      require('mini.ai').setup { n_lines = 500 }
-
       -- File manager
       require('mini.files').setup()
 

@@ -174,6 +174,8 @@ require('lazy').setup({
         { '<leader>t_', hidden = true },
         { '<leader>w', group = 'Workspace' },
         { '<leader>w_', hidden = true },
+        { '<leader>i', group = 'Info' },
+        { '<leader>i_', hidden = true },
       }
     end,
   },
@@ -217,6 +219,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Global search' })
       vim.keymap.set('n', '<leader>,', builtin.buffers, { desc = 'Opened buffers' })
       vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = 'Global grep' })
+      vim.keymap.set('n', '<leader>ir', builtin.registers, { desc = 'Show registers' })
+      vim.keymap.set('n', '<leader>ik', builtin.keymaps, { desc = 'Show keymaps' })
+      vim.keymap.set('n', '<leader>bj', builtin.current_buffer_fuzzy_find, { desc = 'Current buffer fuzzy find' })
     end,
   },
 
@@ -268,7 +273,7 @@ require('lazy').setup({
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, 'Rename')
+          map('<leader>r', vim.lsp.buf.rename, 'Rename')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.

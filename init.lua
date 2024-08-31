@@ -258,11 +258,6 @@ require('lazy').setup({
           -- Jump to the implementation of the word under your cursor.
           map('gI', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
 
-          -- Jump to the type of the word under your cursor.
-          --  Useful when you're not sure what type a variable is and you want to see
-          --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type Definition')
-
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
           map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
@@ -275,15 +270,13 @@ require('lazy').setup({
           --  Most Language Servers support renaming across files, etc.
           map('<leader>r', vim.lsp.buf.rename, 'Rename')
 
-          -- Execute a code action, usually your cursor needs to be on top of an error
-          -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
-
           -- Opens a popup that displays documentation about the word under your cursor
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
           -- Go to declaration
           map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+
+          map('<leader>cd', vim.diagnostic.open_float, 'Line diagnostics')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then

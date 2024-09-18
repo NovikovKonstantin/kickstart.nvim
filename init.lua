@@ -97,11 +97,6 @@ vim.keymap.set('n', '<leader>fm', function()
   require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
 end, { desc = 'Files' })
 
--- [[ Test Keymaps ]]
-vim.keymap.set('n', '<leader>tr', '<cmd>TestNearest<CR>', { desc = 'Run Nearest' })
-vim.keymap.set('n', '<leader>tf', '<cmd>TestFile<CR>', { desc = 'Run File' })
-vim.keymap.set('n', '<leader>tl', '<cmd>TestLast<CR>', { desc = 'Run Last' })
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -351,10 +346,79 @@ require('lazy').setup({
 
   -- Tests plugin
   {
-    'klen/nvim-test',
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-neotest/neotest-go',
+    },
     config = function()
-      require('nvim-test').setup()
+      require('neotest').setup {
+        adapters = {
+          require 'neotest-go',
+        },
+      }
     end,
+    keys = {
+      {
+        '<leader>tr',
+        function()
+          require('neotest').run.run()
+        end,
+        desc = 'Run Nearest',
+      },
+      {
+        '<leader>tf',
+        function()
+          require('neotest').run.run(vim.fn.expand '%')
+        end,
+        desc = 'Run File',
+      },
+      {
+        '<leader>tl',
+        function()
+          require('neotest').run.run_last()
+        end,
+        desc = 'Run Last',
+      },
+      {
+        '<leader>ts',
+        function()
+          require('neotest').summary.toggle()
+        end,
+        desc = 'Toggle Summary',
+      },
+      {
+        '<leader>ts',
+        function()
+          require('neotest').summary.toggle()
+        end,
+        desc = 'Toggle Summary',
+      },
+      {
+        '<leader>to',
+        function()
+          require('neotest').output.open { enter = true, auto_close = true }
+        end,
+        desc = 'Show Output',
+      },
+      {
+        '<leader>tO',
+        function()
+          require('neotest').output_panel.toggle()
+        end,
+        desc = 'Toggle Output Panel',
+      },
+      {
+        '<leader>tS',
+        function()
+          require('neotest').run.stop()
+        end,
+        desc = 'Stop',
+      },
+    },
   },
 
   -- Autoformat

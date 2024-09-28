@@ -593,9 +593,7 @@ require('lazy').setup({
     'chentoast/marks.nvim',
     config = function()
       require('marks').setup {
-        mappings = {
-          delete_line = 'dmm',
-        },
+        default_mappings = true,
       }
     end,
   },

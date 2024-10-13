@@ -162,6 +162,8 @@ require('lazy').setup({
         { '<leader>f_', hidden = true },
         { '<leader>h', group = 'Harpoon' },
         { '<leader>h_', hidden = true },
+        { '<leader>m', group = 'Marks' },
+        { '<leader>m_', hidden = true },
         { '<leader>r', group = 'Rename' },
         { '<leader>r_', hidden = true },
         { '<leader>s', group = 'Search' },
@@ -711,6 +713,24 @@ require('lazy').setup({
       },
     },
     config = true,
+  },
+
+  -- Vessels for better marks
+  {
+    'gcmt/vessel.nvim',
+    config = function()
+      local vessel = require 'vessel'
+      vessel.setup {
+        create_commands = true,
+        commands = {
+          view_marks = 'Marks',
+        },
+      }
+
+      vim.keymap.set('n', '<leader>m', function()
+        vessel.view_marks()
+      end)
+    end,
   },
 }, {
   ui = {

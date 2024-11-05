@@ -207,6 +207,11 @@ require('lazy').setup({
           },
         },
         defaults = {
+          mappings = {
+            n = { -- Mappings for the normal mode only
+              ['<c-d>'] = require('telescope.actions').delete_buffer,
+            },
+          },
           dynamic_preview_title = true, -- Show file's name in fzf preview
           path_display = { shorten = 7 }, -- Max length for one dir's name in fzf results
         },

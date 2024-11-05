@@ -206,6 +206,10 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+        defaults = {
+          dynamic_preview_title = true, -- Show file's name in fzf preview
+          path_display = { shorten = 7 }, -- Max length for one dir's name in fzf results
+        },
       }
 
       -- Enable Telescope extensions if they are installed

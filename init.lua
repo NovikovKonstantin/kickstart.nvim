@@ -208,7 +208,10 @@ require('lazy').setup({
         },
         defaults = {
           mappings = {
-            n = { -- Mappings for the normal mode only
+            n = {
+              ['<c-d>'] = require('telescope.actions').delete_buffer,
+            },
+            i = {
               ['<c-d>'] = require('telescope.actions').delete_buffer,
             },
           },
